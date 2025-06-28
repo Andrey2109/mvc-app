@@ -2,5 +2,5 @@
 
 $routes = [
     '' => 'HomeController@index',
-    'testing' => 'HomeController@index@testing'
+    'testing' => 'HomeController@testing'
 ];

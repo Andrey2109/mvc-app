@@ -4,6 +4,10 @@ class HomeController
 
     public function index()
     {
-        return 'returning Home view';
+        require_once __DIR__ . '/../views/home/index.php';
+    }
+    public function testing()
+    {
+        echo 'returning testing';
     }
 }
