@@ -1,3 +1,3 @@
-<h1>This is home view</h1>
+<h1><?= $title; ?></h1>
 
-<?php var_dump($message) ?>
+<h2><?= $message; ?></h2>

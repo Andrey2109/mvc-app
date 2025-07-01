@@ -5,7 +5,7 @@ function render($view, $data=[]){
 
     ob_start();
 
-    require __DIR__ . $view . ".php";
+    require __DIR__ . "/views/". $view . ".php";
 
     $content = ob_get_clean();
 
