@@ -75,3 +75,11 @@ body.index .hero .hero-content .hero-buttons .btn {
 body.index .hero .hero-content .hero-buttons .btn:hover {
     background-color: #ff4b4b;
 }
+
+nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    background-color: #302e2e;
+    color: #f4f4f4;
+}
