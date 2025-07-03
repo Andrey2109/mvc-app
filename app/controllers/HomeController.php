@@ -12,6 +12,16 @@ class HomeController
         render('home/index', $data);
         // require_once __DIR__ . '/../views/home/index.php';
     }
+    public function about()
+    {
+        $data = [
+            'title' => 'About Page',
+            'message' => 'Welcome to the About Page'
+        ];
+
+        render('home/about', $data);
+        // require_once __DIR__ . '/../views/home/index.php';
+    }
     public function testing()
     {
         echo 'returning testing';
