@@ -1,7 +1,6 @@
 /* General Styles */
 body {
     margin: 0;
-    padding-top: 20px;
 }
 
 .container {
@@ -76,10 +75,19 @@ body.index .hero .hero-content .hero-buttons .btn:hover {
     background-color: #ff4b4b;
 }
 
-nav {
+ul {
     display: flex;
-    flex-direction: row;
-    justify-content: space-around;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    list-style: none;
     background-color: #302e2e;
-    color: #f4f4f4;
+    height: 70px;
+    margin: 0;
+}
+
+ul a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.2rem;
 }
