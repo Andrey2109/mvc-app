@@ -2,7 +2,7 @@
 require_once __DIR__ . '/../app/init.php';
 require_once __DIR__ . '/../routes/web.php';
 
-
+// var_dump($_SERVER);
 
 $request = isset($_GET['url']) ? rtrim($_GET['url'], '/') : '';
 
