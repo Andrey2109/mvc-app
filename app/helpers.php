@@ -1,10 +1,15 @@
 <?php
+function base_url($path=''){
 
-
-function base_url(){
+    if(defined('BASE_URL')){
+        return BASE_URL . ltrim($path, '/');
+    }
 
     $protocol = (!empty($_SERVER["HTTPS"]) && $_SERVER["HTTPS"] != "off") || $_SERVER['SERVER_PORT'] === 443 ? 'https://' : 'http://';
-    $host = $_SERVER ["HTTP_HOST"];
+    $host = $_SERVER["HTTP_HOST"];
+    $base = rtrim(dirname($_SERVER['SCRIPT_NAME']), '/\\');
+
+    return $protocol . $host . $base . '/' . ltrim($path, '/');
 
 }
 
