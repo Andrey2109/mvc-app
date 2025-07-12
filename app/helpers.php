@@ -1,4 +1,5 @@
 <?php
+
 function base_url($path=''){
 
     if(defined('BASE_URL')){
@@ -11,6 +12,10 @@ function base_url($path=''){
 
     return $protocol . $host . $base . '/' . ltrim($path, '/');
 
+}
+
+function base_path($path=''){
+    return realpath(__DIR__ . '/../' . '/' . ltrim($path, '/'));
 }
 
 function render($view, $data=[], $layout = 'layout'){
