@@ -18,6 +18,10 @@ function base_path($path=''){
     return realpath(__DIR__ . '/../' . '/' . ltrim($path, '/'));
 }
 
+function views_path ($path=''){
+    return base_path(BASE_VIEWS . ltrim($path, '/'));
+}
+
 function render($view, $data=[], $layout = 'layout'){
     extract($data);
 
