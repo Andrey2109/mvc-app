@@ -96,7 +96,8 @@ nav ul {
 nav ul li a {
     color: #f4f4f4;
     text-decoration: none;
-    transition: color 0.3s ease;
+    transition: all 0.3s ease;
+    display: inline-block;
 }
 
 nav ul li a:hover {
