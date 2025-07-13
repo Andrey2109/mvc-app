@@ -19,7 +19,18 @@ function base_path($path=''){
 }
 
 function views_path ($path=''){
-    return base_path(BASE_VIEWS . ltrim($path, '/'));
+    return base_path(BASE_VIEWS . ltrim($path, '/\\'));
+}
+
+function redirect($path='', $queryParams=[]){
+    $url = base_url($path);
+
+    if(!empty($queryParams)){
+        $url .= '?' . http_build_query($queryParams);
+    }
+
+    header('Location: '. $url);
+    exit();
 }
 
 function render($view, $data=[], $layout = 'layout'){
@@ -27,10 +38,10 @@ function render($view, $data=[], $layout = 'layout'){
 
     ob_start();
 
-    require __DIR__ . "/views/". $view . ".php";
+    require views_path($view . ".php");
 
     $content = ob_get_clean();
 
-    require __DIR__  . "/views/" . $layout . ".php";
+    require views_path($layout . ".php");
 
 }
