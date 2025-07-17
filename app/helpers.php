@@ -1,5 +1,6 @@
 <?php
 
+
 function base_url($path=''){
 
     if(defined('BASE_URL')){
