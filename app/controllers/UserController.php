@@ -6,6 +6,8 @@ class UserController {
 
         render('user/register');
     }
+
+    
 }
 
 ?>

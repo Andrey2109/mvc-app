@@ -15,7 +15,7 @@
         <p>Securely login and manage your account with us</p>
         <div class="hero-buttons">
             <a class="btn" href="login.html">Login</a>
-            <a class="btn" href="register.html">Register</a>
+            <a class="btn" href="<?php echo base_url('user/register') ?>">Register</a>
         </div>
     </div>
 </div>
