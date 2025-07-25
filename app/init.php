@@ -1,8 +1,14 @@
 <?php
 session_start();
-require_once __DIR__ . "/../config/config.php";
+$config = require_once __DIR__ . "/../config/config.php";
 require_once __DIR__ . "/../config/database.php";
 require_once __DIR__ . "/helpers.php";
+
+
+if (!defined('BASE_URL')) {
+    define('BASE_URL', $config['app']['base_url']);
+}
+define('BASE_VIEWS', $config['app']['base_views']);
 
 spl_autoload_register(function ($class_name) {
     $paths = [
