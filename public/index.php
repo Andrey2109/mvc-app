@@ -2,21 +2,14 @@
 require_once __DIR__ . '/../app/init.php';
 require_once __DIR__ . '/../routes/web.php';
 
-// var_dump($_SERVER);
 
-// $request = isset($_GET['url']) ? rtrim($_GET['url'], '/') : '';
 
 $request = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 
 $method  = $_SERVER['REQUEST_METHOD'];
-// print_r($request);
-// echo "<br>";
-// print_r($method);
-// echo "<br>";
-// print_r($routes);
-// echo "<br>";
 
-if(isset($routes[$method][$request])){
+
+if (isset($routes[$method][$request])) {
 
     list($controller, $action) = explode('@', $routes[$method][$request]);
 
@@ -24,8 +17,6 @@ if(isset($routes[$method][$request])){
 
     $controllerInstance = new $controller;
     $controllerInstance->$action();
-
-
 } else {
     http_response_code(404);
     echo '404 not found';

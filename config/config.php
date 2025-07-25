@@ -17,6 +17,3 @@ return [
         'debug' => true
     ]
 ];
-
-
-// const BASE_VIEWS = 'app/views/';
