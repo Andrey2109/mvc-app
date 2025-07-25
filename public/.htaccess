@@ -1,6 +1,10 @@
 Options -Multiviews
 RewriteEngine On
 
+# Exclude phpMyAdmin from rewriting
+RewriteCond %{REQUEST_URI} !^/phpmyadmin [NC]
+
+
 # Redirect all requests to index.php
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule ^(.*)$ index.php?url=$1 [QSA,L]
