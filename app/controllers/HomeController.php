@@ -4,12 +4,14 @@ class HomeController
 
     public function index()
     {
-        $data = [
-            'title' => 'Home Page',
-            'message' => 'Welcome to the Home Page'
-        ];
 
-        render('home/index', $data, 'layouts/hero_layout');
+        $database = new DataBase();
+        // $data = [
+        //     'title' => 'Home Page',
+        //     'message' => 'Welcome to the Home Page'
+        // ];
+
+        // render('home/index', $data, 'layouts/hero_layout');
         // require_once __DIR__ . '/../views/home/index.php';
     }
     public function about()
