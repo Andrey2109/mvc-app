@@ -12,7 +12,7 @@ class DataBase
         $dbConfig = $config['database'];
         $database = $dbConfig['database'];
         $host = $dbConfig['host'];
-        $userame = $dbConfig['userame'];
+        $username = $dbConfig['username'];
         $password = $dbConfig['password'];
         $charset = $dbConfig['charset'];
         $port = $dbConfig['port'];
@@ -20,10 +20,26 @@ class DataBase
         $dsn = "mysql:host={$host};dbname={$database};charset={$charset};port={$port}";
 
         try {
-            $this->$connection = new PDO($dsn, $username, $password);
-            $this->$connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $this->connection = new PDO($dsn, $username, $password);
+            $this->connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         } catch (PDOException $e) {
-            echo "Connnection failed " . $e->getMessage();
+            die("Connnection failed " . $e->getMessage());
         }
     }
+
+    public static function getInstance()
+    {
+        if (self::$instance == null) {
+            self::$instance = new DataBase();
+        }
+        return self::$instance;
+    }
+
+    public function getConnection()
+    {
+        return $this->connection;
+    }
+
+    private function __clone() {}
+    public   function __wakeup() {}
 }

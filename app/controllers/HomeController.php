@@ -5,14 +5,15 @@ class HomeController
     public function index()
     {
 
-        $database = new DataBase();
-        // $data = [
-        //     'title' => 'Home Page',
-        //     'message' => 'Welcome to the Home Page'
-        // ];
+        $database = DataBase::getInstance();
+        $conn = $database->getConnection();
+        $data = [
+            'title' => 'Home Page',
+            'message' => 'Welcome to the Home Page'
+        ];
 
-        // render('home/index', $data, 'layouts/hero_layout');
-        // require_once __DIR__ . '/../views/home/index.php';
+        render('home/index', $data, 'layouts/hero_layout');
+        require_once __DIR__ . '/../views/home/index.php';
     }
     public function about()
     {
