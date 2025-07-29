@@ -7,7 +7,7 @@ $routes = [
         '/user/register' => 'UserController@showRegisterForm'
     ],
     'POST' => [
-        '/register' => 'UserController@registerUser'
+        '/register' => 'UserController@register'
     ]
 ];
 

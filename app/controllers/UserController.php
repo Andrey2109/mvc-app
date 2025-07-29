@@ -9,7 +9,7 @@ class UserController
         render('user/register');
     }
 
-    public function registerUser()
+    public function register()
     {
 
         var_dump($_POST);
