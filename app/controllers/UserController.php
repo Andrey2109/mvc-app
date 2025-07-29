@@ -11,7 +11,10 @@ class UserController
 
     public function register()
     {
+        $user = new User();
 
-        var_dump($_POST);
+        $user->username = $_POST['username'];
+        $user->email = $_POST['email'];
+        $user->password = $_POST['password'];
     }
 }
