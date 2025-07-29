@@ -1,18 +1,17 @@
 <?php
 
-class UserController {
+class UserController
+{
 
-    public function register(){
+    public function showRegisterForm()
+    {
 
         render('user/register');
     }
 
-    public function registerUser(){
+    public function registerUser()
+    {
 
         var_dump($_POST);
     }
-
-    
 }
-
-?>
