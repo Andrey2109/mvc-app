@@ -17,10 +17,19 @@ class User
 
     public function store()
     {
-        $query = 'INSERT INTO ' . $this->table . ' username, password, email VALUES (?, ?, ?)';
+        $query = 'INSERT INTO ' . $this->table . ' (username, password, email) VALUES (:username, :password, :email)';
         $stmt = $this->conn->prepare($query);
         $this->username = htmlspecialchars(strip_tags($this->username));
+        $hashedPassword = password_hash($this->password, PASSWORD_BCRYPT);
         $this->email = htmlspecialchars(strip_tags($this->email));
-        $this->password = htmlspecialchars(strip_tags($this->password));
+
+        $stmt->bindParam(':username', $this->username);
+        $stmt->bindParam(':password', $hashedPassword);
+        $stmt->bindParam(':email', $this->email);
+
+        if ($stmt->execute()) {
+            return true;
+        }
+        return false;
     }
 }

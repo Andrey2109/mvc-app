@@ -16,5 +16,11 @@ class UserController
         $user->username = $_POST['username'];
         $user->email = $_POST['email'];
         $user->password = $_POST['password'];
+
+        if ($user->store()) {
+            redirect('/');
+        } else {
+            echo "Registration failed";
+        }
     }
 }

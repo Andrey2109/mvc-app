@@ -6,7 +6,7 @@
                  <div class="mb-3">
                      <label for="name" class="form-label">UserName *</label>
                      <input
-                         name='fulllName'
+                         name='username'
                          type="text"
                          class="form-control"
                          id="name"
