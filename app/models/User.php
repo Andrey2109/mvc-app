@@ -15,6 +15,19 @@ class User
         $this->conn = DataBase::getInstance()->getConnection();
     }
 
+    public function UserAlreadyExist($username)
+    {
+        $query = "SELECT username FROM $this->table WHERE username=:username";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(':username', $username);
+
+        $stmt->execute();
+        // $stmt->debugDumpParams();
+        // die();
+
+        return ($stmt->rowCount() > 0);
+    }
+
     public function store()
     {
         $query = 'INSERT INTO ' . $this->table . ' (username, password, email) VALUES (:username, :password, :email)';
@@ -22,6 +35,11 @@ class User
         $this->username = htmlspecialchars(strip_tags($this->username));
         $hashedPassword = password_hash($this->password, PASSWORD_BCRYPT);
         $this->email = htmlspecialchars(strip_tags($this->email));
+
+        if ($this->UserAlreadyExist($this->username)) {
+            return false;
+        }
+
 
         $stmt->bindParam(':username', $this->username);
         $stmt->bindParam(':password', $hashedPassword);

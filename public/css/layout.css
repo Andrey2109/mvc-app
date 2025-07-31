@@ -2,3 +2,20 @@
     text-decoration: none !important;
     color: rgba(0, 0, 0, 0.65);
 }
+
+.alert-message {
+    border: 1px solid #ff4b4b;
+    border-radius: 8px;
+    background-color: #ffc6c6ad;
+    color: #302e2e;
+    align-self: center;
+    padding: 5px;
+    width: fit-content;
+    margin-bottom: 5px;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}

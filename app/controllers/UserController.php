@@ -10,7 +10,9 @@ class UserController
     }
 
     public function register()
+
     {
+        session_start();
         $user = new User();
 
         $user->username = $_POST['username'];
@@ -20,7 +22,8 @@ class UserController
         if ($user->store()) {
             redirect('/');
         } else {
-            echo "Registration failed";
+            $_SESSION['error'] = 'The user already exists or registration failed.';
+            redirect('/user/register');
         }
     }
 }
