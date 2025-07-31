@@ -3,10 +3,20 @@
 class User
 {
     public $table = 'users';
+
     public $id;
     public $username;
     public $password;
     public $email;
+    public $first_name;
+    public $last_name;
+    public $phone;
+    public $birthday;
+    public $organization;
+    public $location;
+    public $profile_image;
+    public $created_at;
+    public $updated_at;
 
     private $conn;
 
