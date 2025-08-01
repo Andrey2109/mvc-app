@@ -5,8 +5,22 @@ class UserController
 
     public function showRegisterForm()
     {
+        $data = [
+            'title' => 'Register'
+        ];
 
-        render('user/register');
+
+
+        render('user/register', $data);
+    }
+    public function showLoginForm()
+    {
+
+        $data = [
+            'title' => 'Login'
+        ];
+
+        render('user/login', $data);
     }
 
     public function register()
