@@ -60,4 +60,20 @@ class User
         }
         return false;
     }
+
+    public function loginCheck()
+    {
+        $query = "SELECT email FROM $this->table WHERE email = :email";
+        $stmt = $this->conn->prepare($query);
+        $this->email = htmlspecialchars(strip_tags($this->email));
+        $stmt->bindParam(":email", $this->email);
+        $stmt->execute();
+
+
+        if ($stmt->rowCount() == 0) {
+            session_start();
+            $_SESSION['user_with_email_exists'] = 'User with this email doesn\'t exist';
+        } else {
+        }
+    }
 }

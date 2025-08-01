@@ -40,4 +40,16 @@ class UserController
             redirect('/user/register');
         }
     }
+    public function login()
+    {
+        $user = new User();
+
+        $user->email = $_POST['email'];
+
+        if ($user->loginCheck()) {
+            redirect('/user/login');
+        } else {
+            redirect('/user/login');
+        }
+    }
 }

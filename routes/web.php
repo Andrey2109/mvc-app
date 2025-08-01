@@ -8,7 +8,8 @@ $routes = [
         '/user/login' => 'UserController@showLoginForm'
     ],
     'POST' => [
-        '/register' => 'UserController@register'
+        '/register' => 'UserController@register',
+        '/login' => 'UserController@login'
     ]
 ];
 
