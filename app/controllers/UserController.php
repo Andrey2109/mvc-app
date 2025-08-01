@@ -45,6 +45,7 @@ class UserController
         $user = new User();
 
         $user->email = $_POST['email'];
+        $user->password = $_POST['password'];
 
         if ($user->loginCheck()) {
             redirect('/user/login');

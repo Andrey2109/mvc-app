@@ -73,7 +73,13 @@ class User
         if ($stmt->rowCount() == 0) {
             session_start();
             $_SESSION['user_with_email_exists'] = 'User with this email doesn\'t exist';
+            return true;
         } else {
+            $query = "SELECT password FROM $this->table WHERE password = :password";
+            $stmt = $this->conn->prepare($query);
+            $this->password =   password_verify($this->password, PASSWORD_BCRYPT);
+            $stmt->bindParam(":password", $this->password);
+            $stmt->execute();
         }
     }
 }
