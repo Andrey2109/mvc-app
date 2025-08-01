@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <ul class="navbar-nav ms-auto">
         <li class="nav-item">
-            <a href="<?php echo base_url('/') ?>">Home</a>
+            <a class="nav-link" href="<?php echo base_url('/') ?>">Home</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="admin.html">Admin</a>
