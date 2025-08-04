@@ -22,6 +22,10 @@ class UserController
 
         render('user/login', $data);
     }
+    public function showAdminDashboard()
+    {
+        render('admin/layout');
+    }
 
     public function register()
 
@@ -47,9 +51,12 @@ class UserController
         $user->email = $_POST['email'];
         $user->password = $_POST['password'];
 
-        if ($user->loginCheck()) {
-            redirect('/user/login');
+        if (isset($_SESSION['user_with_email_not_exists'])) {
+            redirect('/user/register');
+        } elseif ($user->loginCheck()) {
+            redirect('/admin/dashboard');
         } else {
+            $_SESSION['wrong_password'] = 'Wrong password, try again';
             redirect('/user/login');
         }
     }

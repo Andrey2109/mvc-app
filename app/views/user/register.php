@@ -3,6 +3,11 @@
         <?= htmlspecialchars($_SESSION['error']) ?>
     </div>
     <?php unset($_SESSION['error']); ?>
+<?php elseif (!empty($_SESSION['user_with_email_not_exists'])): ?>
+    <div class="alert-message">
+        <?= htmlspecialchars($_SESSION['user_with_email_not_exists']) ?>
+    </div>
+    <?php unset($_SESSION['user_with_email_not_exists']); ?>
 <?php endif; ?>
 <div>
     <h2 class="text-center mb-4">Register</h2>

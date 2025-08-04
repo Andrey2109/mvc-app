@@ -72,14 +72,21 @@ class User
 
         if ($stmt->rowCount() == 0) {
             session_start();
-            $_SESSION['user_with_email_exists'] = 'User with this email doesn\'t exist';
-            return true;
+            $_SESSION['user_with_email_not_exists'] = 'User with this email doesn\'t exist';
         } else {
-            $query = "SELECT password FROM $this->table WHERE password = :password";
+            $query = "SELECT password FROM $this->table WHERE email = :email LIMIT 1";
             $stmt = $this->conn->prepare($query);
-            $this->password =   password_verify($this->password, PASSWORD_BCRYPT);
-            $stmt->bindParam(":password", $this->password);
+            $stmt->bindParam(":email", $this->email);
             $stmt->execute();
+
+            $row = $stmt->fetch(PDO::FETCH_ASSOC);
+            $hashedPasswordFromDB = $row['password'];
+
+            if (password_verify($this->password, $hashedPasswordFromDB)) {
+                return true;
+            } else {
+                return false;
+            }
         }
     }
 }
