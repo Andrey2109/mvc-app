@@ -42,9 +42,9 @@ class User
     {
         $query = 'INSERT INTO ' . $this->table . ' (username, password, email) VALUES (:username, :password, :email)';
         $stmt = $this->conn->prepare($query);
-        $this->username = htmlspecialchars(strip_tags($this->username));
+        $this->username = sanitize(($this->username));
         $hashedPassword = password_hash($this->password, PASSWORD_BCRYPT);
-        $this->email = htmlspecialchars(strip_tags($this->email));
+        $this->email = sanitize(($this->email));
 
         if ($this->UserAlreadyExist($this->username)) {
             return false;
@@ -65,7 +65,7 @@ class User
     {
         $query = "SELECT email FROM $this->table WHERE email = :email";
         $stmt = $this->conn->prepare($query);
-        $this->email = htmlspecialchars(strip_tags($this->email));
+        $this->email = sanitize(($this->email));
         $stmt->bindParam(":email", $this->email);
         $stmt->execute();
 
@@ -74,7 +74,7 @@ class User
             session_start();
             $_SESSION['user_with_email_not_exists'] = 'User with this email doesn\'t exist';
         } else {
-            $query = "SELECT password FROM $this->table WHERE email = :email LIMIT 1";
+            $query = "SELECT id, username, password FROM $this->table WHERE email = :email LIMIT 1";
             $stmt = $this->conn->prepare($query);
             $stmt->bindParam(":email", $this->email);
             $stmt->execute();
@@ -83,6 +83,8 @@ class User
             $hashedPasswordFromDB = $row['password'];
 
             if (password_verify($this->password, $hashedPasswordFromDB)) {
+                $this->id = $row['id'];
+                $this->username = $row['username'];
                 return true;
             } else {
                 return false;

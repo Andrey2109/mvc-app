@@ -71,3 +71,7 @@ function config($key)
 
     return $value;
 }
+function sanitize($variable)
+{
+    return htmlspecialchars(strip_tags($variable));
+}

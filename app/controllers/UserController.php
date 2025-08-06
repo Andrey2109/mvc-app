@@ -54,6 +54,8 @@ class UserController
         if (isset($_SESSION['user_with_email_not_exists'])) {
             redirect('/user/register');
         } elseif ($user->loginCheck()) {
+            $_SESSION['id'] = $user->id;
+            $_SESSION['username'] = $user->username;
             redirect('/admin/dashboard');
         } else {
             $_SESSION['wrong_password'] = 'Wrong password, try again';
