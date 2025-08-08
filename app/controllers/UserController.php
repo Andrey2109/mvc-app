@@ -56,7 +56,8 @@ class UserController
         } elseif ($user->loginCheck()) {
             $_SESSION['id'] = $user->id;
             $_SESSION['username'] = $user->username;
-            redirect('/admin/dashboard');
+            // redirect('/admin/dashboard');
+            redirect('/');
         } else {
             $_SESSION['wrong_password'] = 'Wrong password, try again';
             redirect('/user/login');
