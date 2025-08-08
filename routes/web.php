@@ -6,7 +6,7 @@ $routes = [
         '/about' => 'HomeController@about',
         '/user/register' => 'UserController@showRegisterForm',
         '/user/login' => 'UserController@showLoginForm',
-        '/admin/dashboard' => 'UserController@showAdminDashboard'
+        '/dashboard' => 'AdminController@showDashboard'
     ],
     'POST' => [
         '/register' => 'UserController@register',

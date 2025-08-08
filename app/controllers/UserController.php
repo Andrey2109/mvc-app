@@ -22,10 +22,7 @@ class UserController
 
         render('user/login', $data);
     }
-    public function showAdminDashboard()
-    {
-        render('admin/layout');
-    }
+
 
     public function register()
 
@@ -56,7 +53,7 @@ class UserController
         } elseif ($user->loginCheck()) {
             $_SESSION['id'] = $user->id;
             $_SESSION['username'] = $user->username;
-            // redirect('/admin/dashboard');
+            // redirect('/dashboard');
             redirect('/');
         } else {
             $_SESSION['wrong_password'] = 'Wrong password, try again';
