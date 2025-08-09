@@ -25,6 +25,16 @@ class HomeController
         render('home/about', $data);
         // require_once __DIR__ . '/../views/home/index.php';
     }
+
+    public function contact()
+    {
+        $data = [
+            'title' => 'Contact Page',
+            'message' => 'Welcome to the Contact Page'
+        ];
+
+        render('home/contact', $data);
+    }
     public function testing()
     {
         echo 'returning testing';
