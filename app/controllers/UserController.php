@@ -53,11 +53,19 @@ class UserController
         } elseif ($user->loginCheck()) {
             $_SESSION['id'] = $user->id;
             $_SESSION['username'] = $user->username;
-            // redirect('/dashboard');
-            redirect('/');
+            redirect('/dashboard');
         } else {
             $_SESSION['wrong_password'] = 'Wrong password, try again';
             redirect('/user/login');
         }
+    }
+
+    public function logout()
+    {
+
+        unset($_SESSION['id'], $_SESSION['username']);
+        session_destroy();
+
+        redirect('/user/login');
     }
 }

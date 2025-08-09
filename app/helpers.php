@@ -75,3 +75,8 @@ function sanitize($variable)
 {
     return htmlspecialchars(strip_tags($variable));
 }
+
+function isLoggedIn()
+{
+    return isset($_SESSION['id']);
+}

@@ -11,6 +11,7 @@ $method  = $_SERVER['REQUEST_METHOD'];
 
 if (isset($routes[$method][$request])) {
 
+
     list($controller, $action) = explode('@', $routes[$method][$request]);
 
     require_once __DIR__ . '/../app/controllers/' . $controller . '.php';

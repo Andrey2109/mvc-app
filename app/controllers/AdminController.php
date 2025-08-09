@@ -7,6 +7,10 @@ class AdminController
     public function showDashboard()
     {
 
+        if (!AuthMiddleware::isAuthenticated()) {
+            redirect('/user/login');
+        }
+
         $database = DataBase::getInstance();
         $conn = $database->getConnection();
         $data = [
