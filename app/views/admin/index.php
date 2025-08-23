@@ -60,3 +60,10 @@
           </div>
           <!-- ./col -->
         </div>
+
+<?php
+$scripts = [
+      "dist/js/adminlte.min.js"
+]
+
+?>

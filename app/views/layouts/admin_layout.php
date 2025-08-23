@@ -294,8 +294,16 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <script src="<?= base_url("plugins/jquery/jquery.min.js") ?>"></script>
   <!-- Bootstrap 4 -->
   <script src="<?= base_url("plugins/bootstrap/js/bootstrap.bundle.min.js") ?>"></script>
-  <!-- AdminLTE App -->
-  <script src="<?= base_url("dist/js/adminlte.min.js") ?>"></script>
+ 
+    <?php
+    if(isset($scripts) && is_array($scripts)){
+      foreach($scripts as $script){
+        echo '<script src="'. base_url($script) .'"></script>';
+      }
+    }
+    ?>
+
 </body>
 
 </html>
+
