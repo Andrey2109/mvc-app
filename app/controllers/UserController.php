@@ -27,7 +27,9 @@ class UserController
     public function register()
 
     {
-        session_start();
+         if (session_status() == PHP_SESSION_NONE) {
+            session_start();
+        }
         $user = new User();
 
         $user->username = $_POST['username'];
@@ -58,6 +60,15 @@ class UserController
             $_SESSION['wrong_password'] = 'Wrong password, try again';
             redirect('/user/login');
         }
+    }
+    public function showProfile(){
+
+        $data = [
+            'title' => 'Profile'
+        ];
+
+        render('admin/users/profile', $data, 'layouts/admin_layout');
+
     }
 
     public function logout()

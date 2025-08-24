@@ -37,6 +37,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <li class="nav-item d-none d-sm-inline-block">
           <a href="#" class="nav-link">Contact</a>
         </li>
+        <li class="nav-item d-none d-sm-inline-block">
+          <a href="#" class="nav-link">Profile</a>
+        </li>
       </ul>
 
       <!-- Right navbar links -->
@@ -178,7 +181,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
           </div>
           <div class="info">
-            <a href="#" class="d-block"><?= isset($user['username']) ? $user['username'] : 'User' ?></a>
+            <a href="#" class="d-block"><?= (isset($user['username']) || isset($_SESSION['username'])) ? ($user['username'] ?? $_SESSION['username']) : 'User' ?></a>
           </div>
         </div>
 

@@ -8,7 +8,8 @@ $routes = [
         '/user/register' => 'UserController@showRegisterForm',
         '/user/login' => 'UserController@showLoginForm',
         '/dashboard' => 'AdminController@showDashboard',
-        '/admin' => 'AdminController@admin'
+        '/admin' => 'AdminController@admin',
+         '/admin/users/profile' => 'UserController@showProfile'
     ],
     'POST' => [
         '/register' => 'UserController@register',
