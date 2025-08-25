@@ -53,7 +53,7 @@ class UserController
         if (isset($_SESSION['user_with_email_not_exists'])) {
             redirect('/user/register');
         } elseif ($user->loginCheck()) {
-            $_SESSION['id'] = $user->id;
+            $_SESSION['user_id'] = $user->id;
             $_SESSION['username'] = $user->username;
             redirect('/dashboard');
         } else {
@@ -62,6 +62,8 @@ class UserController
         }
     }
     public function showProfile(){
+
+        $userId = $_SESSION['user_id'];
 
         $data = [
             'title' => 'Profile'
@@ -74,7 +76,7 @@ class UserController
     public function logout()
     {
 
-        unset($_SESSION['id'], $_SESSION['username']);
+        unset($_SESSION['user_id'], $_SESSION['username']);
         session_destroy();
 
         redirect('/user/login');

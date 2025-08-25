@@ -13,10 +13,10 @@ class AdminController
 
         $database = DataBase::getInstance();
         $conn = $database->getConnection();
-        if(!empty($_SESSION['id'])){
+        if(!empty($_SESSION['user_id'])){
             $query = $query = "SELECT * FROM users WHERE id = :id";
             $stmt = $conn->prepare($query);
-            $stmt->bindParam(':id', $_SESSION['id']);
+            $stmt->bindParam(':id', $_SESSION['user_id']);
             $stmt->execute();
             $user = $stmt->fetch(PDO::FETCH_ASSOC);
         }
@@ -39,10 +39,10 @@ class AdminController
 
         $database = DataBase::getInstance();
         $conn = $database->getConnection();
-        if(!empty($_SESSION['id'])){
+        if(!empty($_SESSION['user_id'])){
             $query = $query = "SELECT * FROM users WHERE id = :id";
             $stmt = $conn->prepare($query);
-            $stmt->bindParam(':id', $_SESSION['id']);
+            $stmt->bindParam(':id', $_SESSION['user_id']);
             $stmt->execute();
             $user = $stmt->fetch(PDO::FETCH_ASSOC);
         }
