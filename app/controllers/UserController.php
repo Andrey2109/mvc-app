@@ -3,6 +3,13 @@
 class UserController
 {
 
+    public $userModel;
+
+    public function __construct()
+    {
+        $this->userModel = new User;
+    }
+
     public function showRegisterForm()
     {
         $data = [
@@ -30,13 +37,13 @@ class UserController
          if (session_status() == PHP_SESSION_NONE) {
             session_start();
         }
-        $user = new User();
+        
 
-        $user->username = $_POST['username'];
-        $user->email = $_POST['email'];
-        $user->password = $_POST['password'];
+        $this->userModel->username = $_POST['username'];
+        $this->userModel->email = $_POST['email'];
+        $this->userModel->password = $_POST['password'];
 
-        if ($user->store()) {
+        if ($this->userModel->store()) {
             redirect('/');
         } else {
             $_SESSION['error'] = 'The user already exists or registration failed.';
@@ -45,16 +52,16 @@ class UserController
     }
     public function login()
     {
-        $user = new User();
+        
 
-        $user->email = $_POST['email'];
-        $user->password = $_POST['password'];
+        $this->userModel->email = $_POST['email'];
+        $this->userModel->password = $_POST['password'];
 
         if (isset($_SESSION['user_with_email_not_exists'])) {
             redirect('/user/register');
-        } elseif ($user->loginCheck()) {
-            $_SESSION['user_id'] = $user->id;
-            $_SESSION['username'] = $user->username;
+        } elseif ($this->userModel->loginCheck()) {
+            $_SESSION['user_id'] = $this->userModel->id;
+            $_SESSION['username'] = $this->userModel->username;
             redirect('/dashboard');
         } else {
             $_SESSION['wrong_password'] = 'Wrong password, try again';
