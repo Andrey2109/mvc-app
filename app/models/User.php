@@ -24,6 +24,16 @@ class User
     {
         $this->conn = DataBase::getInstance()->getConnection();
     }
+       public function getUserById($id){
+        $query = "SELECT * FROM users WHERE id=:id";
+        $stmt = $this->conn->prepare($query);
+        $stmt ->bindParam(":id", $id);
+        $stmt->execute();
+
+        if ($stmt->rowCount()==1){
+            return $stmt->fetch(PDO::FETCH_ASSOC);
+        }
+    }
 
     public function UserAlreadyExist($username)
     {

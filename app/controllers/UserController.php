@@ -72,8 +72,12 @@ class UserController
 
         $userId = $_SESSION['user_id'];
 
+        $user = $this->userModel->getUserById($userId);
+        
+
         $data = [
-            'title' => 'Profile'
+            'title' => 'Profile',
+            'user' => $user
         ];
 
         render('admin/users/profile', $data, 'layouts/admin_layout');
