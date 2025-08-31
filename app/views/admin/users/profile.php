@@ -108,7 +108,7 @@
 
                     <!-- Settings Tab -->
                     <div class="tab-pane active" id="settings">
-                        <form action="#" class="form-horizontal" method="POST" enctype="multipart/form-data">
+                        <form action="<?= base_url('admin/users/update') ?>" class="form-horizontal" method="POST" enctype="multipart/form-data">
                             <div class="form-group row">
                                 <label for="inputUsername" class="col-sm-2 col-form-label">Username</label>
                                 <div class="col-sm-10">
