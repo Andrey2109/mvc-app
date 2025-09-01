@@ -101,4 +101,26 @@ class User
             }
         }
     }
+    public function updateUser($id, $username, $email, $first_name, $last_name, $phone, $birthday, $organization, $location, $updated_at= null ){
+        if ($updated_at === null) {
+        $updated_at = date('Y-m-d');
+        }
+        $query = "UPDATE users SET username=:username, email=:email, first_name=:first_name, last_name=:last_name, phone=:phone, birthday=:birthday, organization=:organization, location=:location, updated_at=:updated_at WHERE id=:id";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(':id', $id);
+        $stmt->bindParam(':username', $username);
+        $stmt->bindParam(':email', $email);
+        $stmt->bindParam(':first_name', $first_name);
+        $stmt->bindParam(':last_name', $last_name);
+        $stmt->bindParam(':phone', $phone);
+        $stmt->bindParam(':birthday', $birthday);
+        $stmt->bindParam(':organization', $organization);
+        $stmt->bindParam(':location', $location);
+        $stmt->bindParam(':updated_at', $updated_at);
+
+        if ($stmt->execute()) {
+        return $stmt->rowCount() > 0;
+    }
+    return false;
+    }
 }

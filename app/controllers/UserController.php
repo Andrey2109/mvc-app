@@ -92,4 +92,10 @@ class UserController
 
         redirect('/user/login');
     }
+    public function updateUser(){
+        $data=[
+            'title' => 'Form Submision'
+        ];
+        render('/admin/users/update', $data, 'layouts/admin_layout');
+    }
 }

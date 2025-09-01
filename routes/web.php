@@ -15,7 +15,7 @@ $routes = [
         '/register' => 'UserController@register',
         '/login' => 'UserController@login',
         '/logout' => 'UserController@logout',
-        'admin/users/update' => 'UserController@updateUser'
+        '/admin/users/update' => 'UserController@updateUser'
     ]
 ];
 
