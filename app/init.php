@@ -9,6 +9,7 @@ if (!defined('BASE_URL')) {
     define('BASE_URL', $config['app']['base_url']);
 }
 define('BASE_VIEWS', $config['app']['base_views']);
+define('BASE_IMAGES', $config['app']['base_images']);
 
 spl_autoload_register(function ($class_name) {
     $paths = [

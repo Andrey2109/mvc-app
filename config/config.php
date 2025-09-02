@@ -14,6 +14,7 @@ return [
     'app' => [
         'base_url' => 'http://mvc-app.local/',
         'base_views' => 'app/views/',
+        'base_images' => 'public/images',
         'debug' => true
     ]
 ];

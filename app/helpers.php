@@ -27,6 +27,10 @@ function views_path($path = '')
 {
     return base_path(BASE_VIEWS . ltrim($path, '/\\'));
 }
+function images_path($path = '')
+{
+    return base_path(BASE_IMAGES . ltrim($path, '/\\'));
+}
 
 function redirect($path = '', $queryParams = [])
 {
