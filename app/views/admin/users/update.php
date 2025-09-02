@@ -2,7 +2,7 @@
 if(session_status() == PHP_SESSION_NONE){
     session_start();
 }
-$id = $_SESSION['user_id'];
+$id = $_SESSION['user_id'] ? $_SESSION['user_id'] : NULL;
 
 if($_SERVER['REQUEST_METHOD'] === 'POST'){
     $username = sanitize($_POST['username']);
@@ -15,9 +15,15 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
     $location = sanitize($_POST['location']);
     
     $user = new User;
-    if($user->updateUser($id, $username, $email, $first_name, $last_name, $phone, $birthday, $organization, $location)){
+    if(isset($id)){
+        if($user->updateUser($id, $username, $email, $first_name, $last_name, $phone, $birthday, $organization, $location)){
         redirect('admin/users/profile');
     }
+    } else{
+        echo '<script>alert("Authentication required.")</script>';
+        redirect('/user/login');
+    }
+    
 }
 
 
