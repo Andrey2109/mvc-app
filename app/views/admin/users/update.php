@@ -7,11 +7,15 @@ $id = $_SESSION['user_id'] ? $_SESSION['user_id'] : NULL;
 if($_SERVER['REQUEST_METHOD'] === 'POST'){
     var_dump($_FILES["profile_image"]);
     echo "<br>";
-    var_dump(images_path('1_images'));
-    if(!file_exists($_SERVER["HTTP_HOST"] . "/images/" . $id . "_images")){
-        mkdir("images/" . $id . "_images");
-    } else{
-
+    if(!file_exists( "images/" . $id . "_profile_image")){
+        mkdir("images/" . $id . "_profile_image", 0777, true);
+    } 
+    if($_FILES['profile_image']['error'] == 0){
+        $temp = $_FILES['profile_image']['tmp_name'];
+        $permanent = 'images/' . $id . "_profile_image/" . $_FILES['profile_image']["name"] ;
+        // var_dump($permanent);
+        move_uploaded_file($temp, $permanent);
+        var_dump(count(scandir('images/' . $id . "_profile_image"))==2);
     }
     exit();
     $username = sanitize($_POST['username']);
